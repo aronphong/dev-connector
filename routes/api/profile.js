@@ -18,15 +18,14 @@ router.get("/me", auth, async (req, res) => {
     }).populate("user", ["name", "avatar"]);
 
     if (!profile) {
-      res.status(400).json({ msg: "No profile for user" });
+      return res.status(400).json({ msg: "No profile for user" });
     }
 
     res.json(profile);
   } catch (err) {
-    console.err(err.message);
+    console.error(err.message);
     res.status(500).send("Server Error");
   }
-  res.send("Profile Router");
 });
 
 // @route   POST api/profile/me
