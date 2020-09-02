@@ -9,7 +9,7 @@ export const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     <ul>
       <i className='fas fa-user'></i>{" "}
       <Link to='/dashboard'>
-        <span>Register</span>
+        <span>Dashboard</span>
       </Link>
       <li>
         <a onClick={logout} href='#!'>
