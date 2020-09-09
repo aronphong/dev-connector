@@ -19,7 +19,7 @@ router.post(
     }
 
     try {
-      const user = await User.findById(req.user.id).isSelected("-password");
+      const user = await User.findById(req.user.id).select("-password");
 
       const newPost = new Post({
         text: req.body.text,
@@ -158,7 +158,7 @@ router.put("/unlike/:id", auth, async (req, res) => {
     res.json(post.likes);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Erorr");
+    res.status(500).send("Server Error");
   }
 });
 
