@@ -175,7 +175,7 @@ router.post(
     }
 
     try {
-      const user = await User.findById(req.user.id).isSelected("-password");
+      const user = await User.findById(req.user.id).select("-password");
       const post = await Post.findById(req.params.id);
 
       const newComment = {
@@ -187,7 +187,7 @@ router.post(
 
       post.comments.unshift(newComment);
 
-      await newPost.save();
+      await post.save();
 
       res.json(post.comments);
     } catch (err) {
